@@ -1,4 +1,4 @@
-
+'use server'
 
 export async function getCurrentUser(req?: any) {
   const url = 'https://tikitika.devapi/auth/session';
