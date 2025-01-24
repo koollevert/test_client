@@ -1,7 +1,7 @@
-'use server'
+'use server';
 
 export async function getCurrentUser(req?: any) {
-  const url = 'https://tikitika.devapi/auth/session';
+  const url = 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/auth/session';
   const options: RequestInit = {
     method: 'GET',
     credentials: 'include',
