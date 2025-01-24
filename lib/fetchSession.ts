@@ -1,5 +1,3 @@
-
-
 export async function fetchCurrentUser(req?: any) {
   const baseUrl = typeof window === 'undefined' 
     ? 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local'
@@ -10,28 +8,47 @@ export async function fetchCurrentUser(req?: any) {
     credentials: 'include',
     headers: {
       'Accept': 'application/json',
-      'Host': 'tikitika.dev', // Add host header for ingress routing
+      'Host': 'tikitika.dev',
+      'Connection': 'keep-alive',
+      'X-Forwarded-Host': 'tikitika.dev',
+      'X-Forwarded-Proto': 'https',
       ...(req?.headers ? Object.fromEntries(
-        Object.entries(req.headers).filter(([_, v]) => typeof v === 'string')
+        Object.entries(req.headers)
+          .filter(([key, value]) => 
+            typeof value === 'string' && 
+            !['host', 'connection'].includes(key.toLowerCase())
+          )
       ) : {})
-    }
+    },
+    signal: AbortSignal.timeout(5000) // 5 second timeout
   };
 
-  try {
-    console.log('Fetching current user with options:', options);
-    const response = await fetch(`${baseUrl}/api/auth/session`, options);
+  // Implement retry logic
+  const MAX_RETRIES = 3;
+  let lastError;
 
-    if (!response.ok) {
-      console.error('Failed to fetch current user:', response.statusText);
-      return null;
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    try {
+      console.log(`Attempt ${attempt + 1} - Fetching current user`);
+      const response = await fetch(`${baseUrl}/api/auth/session`, options);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Current User Data:', data);
+      return data.currentUser || null;
+
+    } catch (error) {
+      lastError = error;
+      console.error(`Attempt ${attempt + 1} failed:`, error);
+      if (attempt < MAX_RETRIES - 1) {
+        await new Promise(resolve => setTimeout(resolve, 1000 * (attempt + 1)));
+      }
     }
-
-    const data = await response.json();
-    console.log('Current User Data:', data);
-    return data.currentUser || null;
-
-  } catch (error) {
-    console.error('Error fetching current user:', error);
-    return null;
   }
+
+  console.error('All retry attempts failed:', lastError);
+  return null;
 }
