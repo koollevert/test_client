@@ -1,4 +1,4 @@
-'use server';
+
 
 export async function fetchCurrentUser(req?: any) {
   const baseUrl = typeof window === 'undefined' 
