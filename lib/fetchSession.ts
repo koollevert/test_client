@@ -1,7 +1,7 @@
 
 
 export async function getCurrentUser(req?: any) {
-  const url = 'http://tikitika.devapi/auth/session';
+  const url = 'https://tikitika.devapi/auth/session';
   const options: RequestInit = {
     method: 'GET',
     credentials: 'include',
