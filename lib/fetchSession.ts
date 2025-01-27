@@ -1,5 +1,5 @@
 export async function fetchSession(req?: any) {
-  const res = await fetch('http://auth-srv.svc.cluster.local/api/auth/session', {
+  const res = await fetch('http://auth-srv:3000.svc.cluster.local/api/auth/session', {
     method: 'GET',
     credentials: 'include',
     headers: req?.headers,
