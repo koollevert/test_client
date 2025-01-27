@@ -1,12 +1,8 @@
-'use server'
 export async function fetchSession(req?: any) {
-  const res = await fetch('http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/auth/session', {
+  const res = await fetch('http://auth-srv.svc.cluster.local/api/auth/session', {
     method: 'GET',
     credentials: 'include',
-    headers: {
-      'Accept': 'application/json',
-      'Cookie': req?.headers.get('cookie') || '',
-    },
+    headers: req?.headers,
   });
 
   if (!res.ok) return null;
