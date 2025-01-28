@@ -5,7 +5,7 @@ export default function ImageCard() {
   return (
     <Card className="w-80 overflow-hidden">
       <img
-        src="../../public/IMG_20240205_174752_0.jpg"
+        src="../public/IMG_20240205_174752_0.jpg"
         alt="Example Image"
         className="w-full h-48 object-cover"
       />
