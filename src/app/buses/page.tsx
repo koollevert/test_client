@@ -10,7 +10,7 @@ export default function ImageCard() {
         src="/IMG_20240205_174752_0.jpg"
         alt="Example Image"
         className="w-full h-48 object-cover"
-        fill
+        layout="responsive"
       />
       <div className="p-4">
         <h3 className="text-lg font-semibold">Card Title</h3>
