@@ -10,6 +10,8 @@ export default function ImageCard() {
         src="/IMG_20240205_174752_0.jpg"
         alt="Example Image"
         className="w-full h-48 object-cover"
+        width={600}
+        height={400}
         layout="responsive"
       />
       <div className="p-4">
