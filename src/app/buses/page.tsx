@@ -1,12 +1,13 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function ImageCard() {
   return (
 
     <div className="rounded-2xl shadow-lg overflow-hidden bg-white w-80">
-      <img
-        src="../../../public/IMG_20240205_174752_0.jpg"
+      <Image
+        src="/IMG_20240205_174752_0.jpg"
         alt="Example Image"
         className="w-full h-48 object-cover"
       />
