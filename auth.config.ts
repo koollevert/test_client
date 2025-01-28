@@ -12,6 +12,7 @@ declare module "next-auth" {
   interface User {
     id: string;
     email?: string | null;
+    iat?: number;
   }
 }
 
@@ -19,7 +20,7 @@ interface SessionResponse {
   currentUser: {
     id: string;
     email: string;
-    iat: number;
+    iat?: number;
   } | null;
 }
 
@@ -52,7 +53,7 @@ const authConfig: NextAuthConfig = {
               return {
                 id: user.id,
                 email: user.email,
-                jwt: user.jwt, // Pass the JWT with the user
+                
               };
             }
           } catch (error) {
@@ -73,8 +74,10 @@ const authConfig: NextAuthConfig = {
         session.user = {
           id: response.currentUser.id,
           email: response.currentUser.email,
+          iat: response.currentUser.iat
         };
       }
+      console.log('Session:', session);
       return session;
     }
   },
