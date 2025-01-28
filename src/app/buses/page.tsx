@@ -3,18 +3,20 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 
 export default function ImageCard() {
   return (
-    <Card className="w-80 overflow-hidden">
+
+    <div className="rounded-2xl shadow-lg overflow-hidden bg-white w-80">
       <img
-        src="../public/IMG_20240205_174752_0.jpg"
+        src="../../../public/IMG_20240205_174752_0.jpg"
         alt="Example Image"
         className="w-full h-48 object-cover"
       />
-      <CardContent className="p-4">
-        <CardHeader className="p-0">
-          <CardTitle>Card Title</CardTitle>
-          <CardDescription>A short description or supporting text goes here.</CardDescription>
-        </CardHeader>
-      </CardContent>
-    </Card>
+      <div className="p-4">
+        <h3 className="text-lg font-semibold">Card Title</h3>
+        <p className="text-sm text-gray-600">
+          A short description or supporting text goes here.
+        </p>
+      </div>
+    </div>
+
   );
 }
