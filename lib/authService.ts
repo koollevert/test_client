@@ -78,6 +78,16 @@ export async function handleOAuthCallback({code, provider, redirect_uri, req}:an
   }
 }
 
+export async function signOutWithApi(req?: any): Promise<void> {
+  const axiosClient = buildAxiosClient({ req });
+
+  try {
+    await axiosClient.post('/api/auth/signout');
+  } catch (error: any) {
+    const errorMessage = error.response?.data?.message || 'Signout failed.';
+    throw new Error(errorMessage);
+  }
+}
 
 export const fetchCurrentUser = async () => {
   const response = await fetch('http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/auth/session', {

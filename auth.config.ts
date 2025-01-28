@@ -1,18 +1,26 @@
-import type { NextAuthConfig } from "next-auth";
+import type { NextAuthConfig, Session } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
 // Uncomment Google if you want to use it
 // import Google from "next-auth/providers/google";
 import { LoginSchema } from "./schemas";
 import { fetchCurrentUser, signInWithApi } from "./lib/authService";
+import { fetchSession } from "./lib/fetchSession";
 
 // Declare the NextAuth User interface to include the JWT
 declare module "next-auth" {
   interface User {
     id: string;
     email?: string | null;
-    jwt: string;
   }
+}
+
+interface SessionResponse {
+  currentUser: {
+    id: string;
+    email: string;
+    iat: number;
+  } | null;
 }
 
 const authConfig: NextAuthConfig = {
@@ -58,38 +66,19 @@ const authConfig: NextAuthConfig = {
     }),
   ],
   callbacks: {
-    // The JWT callback is invoked when the JWT is created or updated
-    async jwt({ token, user }) {
-      if (user) {
-        // Store the user JWT into the token object when the user logs in
-        token.id = user.id;
-        token.email = user.email;
-        token.jwt = user.jwt; // Store the JWT as part of the token
-      }
-      return token;
-    },
-    // The session callback is called when the session is created or updated
-    async session({ session, token }: any) {
-      const currentUser = await fetchCurrentUser();
-      if (currentUser) {
+    async session({ session }: { session: Session }) {
+      const response = await fetchSession() as SessionResponse;
+      
+      if (response?.currentUser) {
         session.user = {
-          id: currentUser.id,
-          email: currentUser.email,
-          jwt: currentUser.jwt,
-        };
-      } else if (token?.jwt) {
-        // Attach the JWT to the session
-        session.jwt = token.jwt;
-        session.user = {
-          id: token.id,
-          email: token.email,
+          id: response.currentUser.id,
+          email: response.currentUser.email,
         };
       }
-      console.log(session);
       return session;
-    },
+    }
   },
-  session: { strategy: "jwt" }, // Use JWT for session storage
+  
 };
 
 export default authConfig;
