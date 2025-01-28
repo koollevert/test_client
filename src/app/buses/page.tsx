@@ -9,11 +9,10 @@ export default function ImageCard() {
       <Image
         src="/IMG_20240205_174752_0.jpg"
         alt="Example Image"
-        className="w-full h-48 object-cover"
         width={600}
         height={400}
         layout="responsive"
-      />
+        />
       <div className="p-4">
         <h3 className="text-lg font-semibold">Card Title</h3>
         <p className="text-sm text-gray-600">
@@ -22,5 +21,7 @@ export default function ImageCard() {
       </div>
     </div>
 
-  );
+);
 }
+
+// className="w-full h-48 object-cover"
