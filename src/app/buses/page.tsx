@@ -77,6 +77,7 @@ export default function PropertyCard() {
           </p>
         </div>
       </div>
+      <Button>Press me</Button>
     </div>
   );
 }
@@ -89,6 +90,5 @@ import {Button} from "@heroui/button";
 
 function App() {
   return (
-    <Button>Press me</Button>
   );
 }
