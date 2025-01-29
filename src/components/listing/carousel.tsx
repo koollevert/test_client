@@ -22,9 +22,11 @@ export default function Carousel({
     const slideInterval = setInterval(next, autoSlideInterval);
     return () => clearInterval(slideInterval);
   }, [autoSlide, autoSlideInterval]);
+  
+//   className="max-w-sm rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white
 
   return (
-    <div className="overflow-hidden relative w-full max-w-2xl mx-auto">
+    <div className="max-w-sm overflow-hidden relative w-full mx-auto">
       {/* Slide Container */}
       <div
         className="flex transition-transform ease-out duration-500"
