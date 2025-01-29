@@ -2,6 +2,8 @@ import {Button} from "@heroui/button";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Image from "next/image";
+import Carousel from "@/components/listing/carousel";
+import { image } from "@heroui/theme";
 
 // export default function ImageCard() {
 //   return (
@@ -28,7 +30,16 @@ import Image from "next/image";
 // import { Card } from "@/components/ui/card";
 // import Image from "next/image";
 
+
 export default function PropertyCard() {
+  const images=[
+    "/ls1",
+    "/ls2",
+    "/ls3",
+    "/ls4",
+    "/ls5",
+    "/ls6",
+  ]
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
       {/* Image Container */}
@@ -79,6 +90,7 @@ export default function PropertyCard() {
         </div>
       </div>
       <Button>Press me</Button>
+      <Carousel images={images} autoSlide={true} autoSlideInterval={4000} />
     </div>
   );
 }
