@@ -33,15 +33,15 @@ import { image } from "@heroui/theme";
 
 export default function PropertyCard() {
   const images=[
-    "/ls1",
-    "/ls2",
-    "/ls3",
-    "/ls4",
-    "/ls5",
-    "/ls6",
+    "/ls1.jpg",
+    "/ls2.jpg",
+    "/ls3.jpg",
+    "/ls4.jpg",
+    "/ls5.jpg",
+    "/ls6.jpg",
   ]
   return (
-    <Carousel images={images} autoSlide={true} autoSlideInterval={4000} />
+    <Carousel images={images} autoSlide={true} autoSlideInterval={10000} />
   );
 }
 
