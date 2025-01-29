@@ -26,7 +26,7 @@ export default function Carousel({
 //   className="max-w-sm rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white
 
   return (
-    <div className="max-w-sm overflow-hidden relative w-full mx-auto">
+    <div className="max-w-sm max-h-sm overflow-hidden relative w-full mx-auto">
       {/* Slide Container */}
       <div
         className="flex transition-transform ease-out duration-500"
