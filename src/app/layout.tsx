@@ -29,7 +29,7 @@ export default async function RootLayout({
 }>) {
   const session= await auth();
   return (
-    <HeroUIProvider>
+    // <HeroUIProvider>
       <SessionProvider session={session}>
         <html lang="en">
           <body
@@ -40,7 +40,7 @@ export default async function RootLayout({
           </body>
         </html>
       </SessionProvider>
-    </HeroUIProvider>
+    // </HeroUIProvider>
   );
 }
 
