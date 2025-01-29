@@ -33,7 +33,7 @@ export default function Carousel({
         style={{ transform: `translateX(-${curr * 100}%)` }}
       >
         {images.map((image, index) => (
-          <div key={index} className="w-full flex-shrink-0 relative h-48">
+          <div key={index} className="w-full flex-shrink-0 relative h-64">
             <Image
               src={image}
               alt={`Slide ${index + 1}`}
