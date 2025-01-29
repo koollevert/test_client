@@ -1,3 +1,4 @@
+import {HeroUIProvider} from "@heroui/system";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -28,15 +29,19 @@ export default async function RootLayout({
 }>) {
   const session= await auth();
   return (
-    <SessionProvider session={session}>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <Toaster/>
-          {children}
-        </body>
-      </html>
-    </SessionProvider>
+    <HeroUIProvider>
+      <SessionProvider session={session}>
+        <html lang="en">
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <Toaster/>
+            {children}
+          </body>
+        </html>
+      </SessionProvider>
+    </HeroUIProvider>
   );
 }
+
+
