@@ -44,12 +44,13 @@ export default function PropertyCard() {
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
       {/* Image Container */}
       <div className="relative h-48">
-        <Image
+        <Carousel images={images} autoSlide={true} autoSlideInterval={4000} />
+        {/* <Image
           src="/IMG_20240205_174752_0.jpg"
           alt="Property Image"
           fill
           className="object-cover"
-        />
+        /> */}
         <div className="absolute top-4 left-4">
           <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
             For Sale
@@ -90,7 +91,6 @@ export default function PropertyCard() {
         </div>
       </div>
       <Button>Press me</Button>
-      <Carousel images={images} autoSlide={true} autoSlideInterval={4000} />
     </div>
   );
 }
