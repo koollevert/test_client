@@ -41,7 +41,9 @@ export default function PropertyCard() {
     "/ls6.jpg",
   ]
   return (
-    <Carousel images={images} autoSlide={true} autoSlideInterval={10000} />
+    <div className="relative h-48" >
+      <Carousel images={images} autoSlide={true} autoSlideInterval={10000} />
+    </div>
   );
 }
 
