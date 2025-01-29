@@ -1,3 +1,4 @@
+import {Button} from "@heroui/button";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Image from "next/image";
@@ -85,10 +86,5 @@ export default function PropertyCard() {
 // className="w-full h-48 object-cover"
 
 
-import * as React from "react";
-import {Button} from "@heroui/button";
 
-function App() {
-  return (
-  );
-}
+
