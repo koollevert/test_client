@@ -1,7 +1,7 @@
 'use client';   
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "react-feather";
-import React from "react";
 
 export default function Carousel({
   images,
@@ -31,8 +31,15 @@ export default function Carousel({
         style={{ transform: `translateX(-${curr * 100}%)` }}
       >
         {images.map((image, index) => (
-          <div key={index} className="w-full flex-shrink-0">
-            <img src={image} alt={`Slide ${index + 1}`} className="w-full h-auto rounded-lg" />
+          <div key={index} className="w-full flex-shrink-0 relative">
+            <Image
+              src={image}
+              alt={`Slide ${index + 1}`}
+              width={800} // Adjust width
+              height={600} // Adjust height
+              className="w-full h-auto object-cover rounded-lg"
+              priority={index === 0} // Optimize the first image
+            />
           </div>
         ))}
       </div>
@@ -67,3 +74,4 @@ export default function Carousel({
     </div>
   );
 }
+
