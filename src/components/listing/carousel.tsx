@@ -26,19 +26,20 @@ export default function Carousel({
 //   className="max-w-sm rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white
 
   return (
-    <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl overflow-hidden relative w-full mx-auto">
+    <div className="max-w-sm overflow-hidden relative w-full mx-auto">
       {/* Slide Container */}
       <div
         className="flex transition-transform ease-out duration-500"
         style={{ transform: `translateX(-${curr * 100}%)` }}
       >
         {images.map((image, index) => (
-          <div key={index} className="w-full flex-shrink-0 relative">
+          <div key={index} className="w-full flex-shrink-0 relative h-48">
             <Image
               src={image}
               alt={`Slide ${index + 1}`}
-              width={800} // Adjust width
-              height={600} // Adjust height
+            //   width={800} // Adjust width
+            //   height={600} // Adjust height
+              fill
               className="w-full h-auto object-cover rounded-lg"
               priority={index === 0} // Optimize the first image
             />
