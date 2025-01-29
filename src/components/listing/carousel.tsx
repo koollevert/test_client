@@ -24,10 +24,10 @@ export default function Carousel({
   }, [autoSlide, autoSlideInterval]);
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto">
+    <div className="overflow-hidden relative w-full max-w-2xl mx-auto">
       {/* Slide Container */}
       <div
-        className="overflow-hidden flex transition-transform ease-out duration-500"
+        className="flex transition-transform ease-out duration-500"
         style={{ transform: `translateX(-${curr * 100}%)` }}
       >
         {images.map((image, index) => (
@@ -45,7 +45,7 @@ export default function Carousel({
       </div>
 
       {/* Navigation Buttons */}
-      <div className="absolute inset-0 flex items-center justify-between p-4 z-10">
+      <div className="absolute inset-0 flex items-center justify-between p-4">
         <button
           onClick={prev}
           className="p-2 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
@@ -61,7 +61,7 @@ export default function Carousel({
       </div>
 
       {/* Pagination Dots */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
         {images.map((_, i) => (
           <div
             key={i}
@@ -74,3 +74,4 @@ export default function Carousel({
     </div>
   );
 }
+
