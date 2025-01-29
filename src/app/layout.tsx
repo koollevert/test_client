@@ -29,18 +29,18 @@ export default async function RootLayout({
 }>) {
   const session= await auth();
   return (
-    // <HeroUIProvider>
-      <SessionProvider session={session}>
+    <SessionProvider session={session}>
         <html lang="en">
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
+            >
             <Toaster/>
-            {children}
+            <HeroUIProvider>
+              {children}
+            </HeroUIProvider>
           </body>
         </html>
       </SessionProvider>
-    // </HeroUIProvider>
   );
 }
 
