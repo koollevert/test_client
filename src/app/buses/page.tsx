@@ -41,8 +41,11 @@ export default function PropertyCard() {
     "/ls6.jpg",
   ]
   return (
-    <div className="relative h-48" >
-      <Carousel images={images} autoSlide={true} autoSlideInterval={10000} />
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
+      <div className="relative h-48" >
+        <Carousel images={images} autoSlide={true} autoSlideInterval={10000} />
+      </div>
+
     </div>
   );
 }
