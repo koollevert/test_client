@@ -23,3 +23,12 @@
 //     jwt: string;
 //   }
 // }
+// Add your type definitions here
+
+export interface ExtendedUser {
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+    isTwoFactorEnabled: boolean;
+  }

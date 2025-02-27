@@ -2,7 +2,7 @@
 
 
 import { FaUser } from "react-icons/fa"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu"
 import { useCurrentUser } from "../../../hooks/use-current-user"
 import { LogoutButton } from "./logout-button"
