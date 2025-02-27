@@ -44,7 +44,7 @@ export default function PropertyCard() {
 
  
     <Carousel images={images} autoSlide={true} autoSlideInterval={10000} />
-      
+    
   );
 }
 
