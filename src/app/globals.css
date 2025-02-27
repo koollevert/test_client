@@ -1,12 +1,19 @@
 @import "tailwindcss/preflight";
 
+/* Define custom utilities first */
+@layer utilities {
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+}
+
 @custom-variant dark (&:is(.dark *));
 @tailwind utilities;
 @tailwind utilities;
 
 html,
 body,
-:root{
+:root {
   height: 100%;
 }
 
@@ -105,11 +112,5 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-@layer utilities {
-  .border-border {
-    border-color: hsl(var(--border));
   }
 }
