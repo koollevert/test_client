@@ -10,8 +10,6 @@
   }
 }
 
-@custom-variant dark (&:is(.dark *));
-@tailwind utilities;
 @tailwind utilities;
 
 html,
@@ -111,12 +109,3 @@ body {
   }
 }
 
-theme: {
-  extend: {
-    colors: {
-      border: 'hsl(var(--border))',
-      ring: 'hsl(var(--ring))',
-      // ... other colors
-    }
-  }
-}
