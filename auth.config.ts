@@ -10,7 +10,7 @@ import { fetchSession } from "./lib/fetchSession";
 // Declare the NextAuth User interface to include the JWT
 declare module "next-auth" {
   interface User {
-    id: string;
+    id?: string;
     email?: string | null;
     iat?: number;
   }
