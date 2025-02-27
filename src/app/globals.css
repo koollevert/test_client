@@ -5,6 +5,9 @@
   .border-border {
     border-color: hsl(var(--border));
   }
+  .outline-ring {
+    outline-color: hsl(var(--ring));
+  }
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -99,18 +102,21 @@ body {
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring));
+    outline-width: 0;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
+theme: {
+  extend: {
+    colors: {
+      border: 'hsl(var(--border))',
+      ring: 'hsl(var(--ring))',
+      // ... other colors
+    }
   }
 }
